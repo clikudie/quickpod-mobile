@@ -29,6 +29,7 @@
 		DD11223344556677889900DD /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11223344556677889900CC /* AuthView.swift */; };
 		EE11223344556677889900EE /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF11223344556677889900FF /* VerificationView.swift */; };
 		EE22334455667788990011EE /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF22334455667788990011FF /* ForgotPasswordView.swift */; };
+		CC77889900112233445566CC /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD77889900112233445566DD /* Keychain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		AA55667788990011223344AA /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		AA66778899001122334455AA /* QuickPod.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickPod.entitlements; sourceTree = "<group>"; };
 		ADC83CE5E372188E423B881C /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
+		DD77889900112233445566DD /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		B569F9F78C88F6AED8A6A082 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BC71FA6638938ED28A476552 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BFC0A27E9159C3A87D022E14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 		7A95F6AA68C238A897346929 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				DD77889900112233445566DD /* Keychain.swift */,
 				ADC83CE5E372188E423B881C /* TimeFormatter.swift */,
 			);
 			path = Utilities;
@@ -225,6 +228,7 @@
 				D0C72F5D35B9245220BF28A0 /* SettingsView.swift in Sources */,
 				5B8AAD910D9E2F7D47C83790 /* SubmitView.swift in Sources */,
 				4BE76A561F2067A37B875304 /* TimeFormatter.swift in Sources */,
+				CC77889900112233445566CC /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

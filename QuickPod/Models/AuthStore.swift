@@ -9,25 +9,27 @@ final class AuthStore: ObservableObject {
     private(set) var userId: String?
     private(set) var email: String?
 
-    private static let tokenKey      = "quickpod_auth_token"
-    private static let userIdKey     = "quickpod_user_id"
-    private static let isVerifiedKey = "quickpod_is_verified"
-    private static let emailKey      = "quickpod_email"
+    // Token lives in Keychain. The rest are non-sensitive metadata in UserDefaults.
+    private static let tokenKeychainKey = "quickpod_auth_token"
+    private static let userIdKey        = "quickpod_user_id"
+    private static let isVerifiedKey    = "quickpod_is_verified"
+    private static let emailKey         = "quickpod_email"
 
     private init() {
-        if let token  = UserDefaults.standard.string(forKey: Self.tokenKey),
-           let userId = UserDefaults.standard.string(forKey: Self.userIdKey) {
-            self.userId  = userId
-            self.email   = UserDefaults.standard.string(forKey: Self.emailKey)
-            self.isVerified = UserDefaults.standard.bool(forKey: Self.isVerifiedKey)
-            QuickPodAPI.shared.token = token
-            isAuthenticated = true
-            LibraryStore.shared.switchUser(userId: userId)
-        }
+        migrateTokenIfNeeded()
+
+        guard let token  = Keychain.load(key: Self.tokenKeychainKey),
+              let userId = UserDefaults.standard.string(forKey: Self.userIdKey) else { return }
+        self.userId     = userId
+        self.email      = UserDefaults.standard.string(forKey: Self.emailKey)
+        self.isVerified = UserDefaults.standard.bool(forKey: Self.isVerifiedKey)
+        QuickPodAPI.shared.token = token
+        isAuthenticated = true
+        LibraryStore.shared.switchUser(userId: userId)
     }
 
     func save(token: String, userId: String, isVerified: Bool, email: String) {
-        UserDefaults.standard.set(token,      forKey: Self.tokenKey)
+        Keychain.save(token, key: Self.tokenKeychainKey)
         UserDefaults.standard.set(userId,     forKey: Self.userIdKey)
         UserDefaults.standard.set(isVerified, forKey: Self.isVerifiedKey)
         UserDefaults.standard.set(email,      forKey: Self.emailKey)
@@ -45,7 +47,7 @@ final class AuthStore: ObservableObject {
     }
 
     func signOut() {
-        UserDefaults.standard.removeObject(forKey: Self.tokenKey)
+        Keychain.delete(key: Self.tokenKeychainKey)
         UserDefaults.standard.removeObject(forKey: Self.userIdKey)
         UserDefaults.standard.removeObject(forKey: Self.isVerifiedKey)
         UserDefaults.standard.removeObject(forKey: Self.emailKey)
@@ -55,5 +57,16 @@ final class AuthStore: ObservableObject {
         isVerified  = false
         isAuthenticated = false
         LibraryStore.shared.switchUser(userId: nil)
+    }
+
+    // MARK: - Migration
+
+    /// Move a token stored in UserDefaults (old behaviour) into the Keychain.
+    /// Runs once and is a no-op on every subsequent launch.
+    private func migrateTokenIfNeeded() {
+        let udKey = Self.tokenKeychainKey
+        guard let oldToken = UserDefaults.standard.string(forKey: udKey) else { return }
+        Keychain.save(oldToken, key: udKey)
+        UserDefaults.standard.removeObject(forKey: udKey)
     }
 }

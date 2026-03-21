@@ -71,13 +71,24 @@ final class HighlightViewModel: ObservableObject {
 
     // MARK: - Polling
 
+    private static let pollTimeout: TimeInterval = 30 * 60  // 30 minutes
+
     func startPolling() {
         pollingTask?.cancel()
         startMessageRotation()
         startElapsedTimer()
 
+        let deadline = Date().addingTimeInterval(Self.pollTimeout)
+
         pollingTask = Task {
             while !Task.isCancelled {
+                if Date() > deadline {
+                    messageTimer?.cancel()
+                    elapsedTimer?.cancel()
+                    errorMessage = "The request is taking too long. Please try again later."
+                    break
+                }
+
                 guard let id = jobId else { break }
                 do {
                     let detail = try await api.getHighlight(jobId: id)
