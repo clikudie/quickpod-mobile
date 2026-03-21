@@ -10,6 +10,8 @@ struct ContentView: View {
     var body: some View {
         if !authStore.isAuthenticated {
             AuthView()
+        } else if !authStore.isVerified {
+            VerificationView(email: authStore.email ?? "")
         } else {
             appTabs
         }

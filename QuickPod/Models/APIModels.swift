@@ -68,6 +68,33 @@ struct AuthRequest: Encodable {
 struct TokenResponse: Decodable {
     let accessToken: String
     let userId: String
+    let isVerified: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case accessToken, userId, isVerified
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        accessToken = try container.decode(String.self, forKey: .accessToken)
+        userId = try container.decode(String.self, forKey: .userId)
+        // Default true so older backends that don't send this field still work
+        isVerified = try container.decodeIfPresent(Bool.self, forKey: .isVerified) ?? true
+    }
+}
+
+struct VerifyRequest: Encodable {
+    let code: String
+}
+
+struct ForgotPasswordRequest: Encodable {
+    let email: String
+}
+
+struct ResetPasswordRequest: Encodable {
+    let email: String
+    let code: String
+    let newPassword: String
 }
 
 struct UserResponse: Decodable {

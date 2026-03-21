@@ -7,6 +7,7 @@ struct AuthView: View {
     @State private var password = ""
     @State private var isLoading = false
     @State private var errorMessage: String?
+    @State private var showForgotPassword = false
 
     private var isFormValid: Bool {
         !email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && password.count >= 8
@@ -98,8 +99,19 @@ struct AuthView: View {
                 .buttonStyle(.borderedProminent)
                 .disabled(!isFormValid || isLoading)
                 .padding(.horizontal)
+
+                if isLogin {
+                    Button("Forgot password?") {
+                        showForgotPassword = true
+                    }
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                }
             }
             .padding(.bottom, 32)
+        }
+        .sheet(isPresented: $showForgotPassword) {
+            ForgotPasswordView()
         }
     }
 
@@ -115,7 +127,12 @@ struct AuthView: View {
             } else {
                 response = try await QuickPodAPI.shared.register(email: email, password: password)
             }
-            AuthStore.shared.save(token: response.accessToken, userId: response.userId)
+            AuthStore.shared.save(
+                token: response.accessToken,
+                userId: response.userId,
+                isVerified: response.isVerified,
+                email: email.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+            )
         } catch {
             errorMessage = error.localizedDescription
         }

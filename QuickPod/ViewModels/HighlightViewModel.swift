@@ -38,8 +38,10 @@ final class HighlightViewModel: ObservableObject {
     ]
 
     @Published var stageMessage: String = "Preparing..."
+    @Published var elapsedSeconds: Int = 0
     private var messageIndex = 0
     private var messageTimer: Task<Void, Never>?
+    private var elapsedTimer: Task<Void, Never>?
 
     // MARK: - Submit
 
@@ -72,6 +74,7 @@ final class HighlightViewModel: ObservableObject {
     func startPolling() {
         pollingTask?.cancel()
         startMessageRotation()
+        startElapsedTimer()
 
         pollingTask = Task {
             while !Task.isCancelled {
@@ -83,6 +86,7 @@ final class HighlightViewModel: ObservableObject {
 
                     if detail.status == .succeeded || detail.status == .failed {
                         messageTimer?.cancel()
+                        elapsedTimer?.cancel()
                         if detail.status == .succeeded, let audioPath = detail.outputAudioUrl {
                             setupPlayer(audioPath: audioPath)
                         }
@@ -105,6 +109,19 @@ final class HighlightViewModel: ObservableObject {
         pollingTask = nil
         messageTimer?.cancel()
         messageTimer = nil
+        elapsedTimer?.cancel()
+        elapsedTimer = nil
+    }
+
+    private func startElapsedTimer() {
+        elapsedTimer?.cancel()
+        elapsedSeconds = 0
+        elapsedTimer = Task {
+            while !Task.isCancelled {
+                try? await Task.sleep(for: .seconds(1))
+                elapsedSeconds += 1
+            }
+        }
     }
 
     private func startMessageRotation() {
@@ -194,6 +211,7 @@ final class HighlightViewModel: ObservableObject {
         isDownloading = false
         savedLocally = false
         stageMessage = "Preparing..."
+        elapsedSeconds = 0
     }
 
     deinit {

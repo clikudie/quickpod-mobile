@@ -49,6 +49,22 @@ final class QuickPodAPI {
         return try await get(path: "/auth/me")
     }
 
+    func verifyEmail(code: String) async throws {
+        let _: [String: String] = try await post(path: "/auth/verify", body: VerifyRequest(code: code))
+    }
+
+    func resendVerification() async throws {
+        let _: [String: String] = try await post(path: "/auth/resend-verification", body: EmptyBody())
+    }
+
+    func forgotPassword(email: String) async throws {
+        let _: [String: String] = try await post(path: "/auth/forgot-password", body: ForgotPasswordRequest(email: email), authenticated: false)
+    }
+
+    func resetPassword(email: String, code: String, newPassword: String) async throws -> TokenResponse {
+        return try await post(path: "/auth/reset-password", body: ResetPasswordRequest(email: email, code: code, newPassword: newPassword), authenticated: false)
+    }
+
     // MARK: - Endpoints
 
     func createHighlight(url: String) async throws -> HighlightResponse {
@@ -122,6 +138,8 @@ final class QuickPodAPI {
         }
     }
 }
+
+private struct EmptyBody: Encodable {}
 
 private struct ServerErrorBody: Decodable {
     let error: String?
