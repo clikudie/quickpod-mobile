@@ -101,3 +101,7 @@ struct UserResponse: Decodable {
     let userId: String
     let email: String
 }
+
+struct DeviceTokenRequest: Encodable {
+    let token: String
+}

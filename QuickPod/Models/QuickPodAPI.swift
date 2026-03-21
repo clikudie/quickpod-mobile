@@ -57,6 +57,10 @@ final class QuickPodAPI {
         let _: [String: String] = try await post(path: "/auth/resend-verification", body: EmptyBody())
     }
 
+    func registerDeviceToken(_ token: String) async throws {
+        let _: [String: String] = try await post(path: "/devices/token", body: DeviceTokenRequest(token: token))
+    }
+
     func forgotPassword(email: String) async throws {
         let _: [String: String] = try await post(path: "/auth/forgot-password", body: ForgotPasswordRequest(email: email), authenticated: false)
     }

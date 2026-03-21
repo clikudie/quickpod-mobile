@@ -113,6 +113,20 @@ final class HighlightViewModel: ObservableObject {
         elapsedTimer = nil
     }
 
+    /// Restart polling if a job is in progress (called when app returns to foreground).
+    func resumePollingIfNeeded() {
+        guard jobId != nil, jobStatus != .succeeded, jobStatus != .failed else { return }
+        startPolling()
+    }
+
+    /// Open a job by ID — used when the user taps a push notification.
+    func openJob(jobId: String) {
+        guard self.jobId != jobId else { return }
+        reset()
+        self.jobId = jobId
+        startPolling()
+    }
+
     private func startElapsedTimer() {
         elapsedTimer?.cancel()
         elapsedSeconds = 0

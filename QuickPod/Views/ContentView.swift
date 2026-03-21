@@ -5,15 +5,37 @@ struct ContentView: View {
     @StateObject private var viewModel = HighlightViewModel()
     @StateObject private var libraryStore = LibraryStore.shared
     @StateObject private var libraryPlayer = AudioPlayerManager()
+    @ObservedObject private var notificationManager = NotificationManager.shared
+    @Environment(\.scenePhase) private var scenePhase
     @State private var showSettings = false
 
     var body: some View {
-        if !authStore.isAuthenticated {
-            AuthView()
-        } else if !authStore.isVerified {
-            VerificationView(email: authStore.email ?? "")
-        } else {
-            appTabs
+        Group {
+            if !authStore.isAuthenticated {
+                AuthView()
+            } else if !authStore.isVerified {
+                VerificationView(email: authStore.email ?? "")
+            } else {
+                appTabs
+            }
+        }
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .background {
+                viewModel.stopPolling()
+            } else if newPhase == .active {
+                viewModel.resumePollingIfNeeded()
+            }
+        }
+        .onAppear {
+            if let jobId = notificationManager.pendingJobId {
+                viewModel.openJob(jobId: jobId)
+                notificationManager.pendingJobId = nil
+            }
+        }
+        .onChange(of: notificationManager.pendingJobId) { _, jobId in
+            guard let jobId else { return }
+            viewModel.openJob(jobId: jobId)
+            notificationManager.pendingJobId = nil
         }
     }
 
