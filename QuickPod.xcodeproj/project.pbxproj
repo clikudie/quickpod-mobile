@@ -1,0 +1,409 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		41E700C3D0704D07E4DCEA89 /* APIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DB30DD9566BDBDD26D6B8E /* APIModels.swift */; };
+		4BE76A561F2067A37B875304 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC83CE5E372188E423B881C /* TimeFormatter.swift */; };
+		541F94F6FBE9035459FAED13 /* LibraryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94540A8C98C4BF16B241CB3 /* LibraryStore.swift */; };
+		5B8AAD910D9E2F7D47C83790 /* SubmitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E5FEDEDE7319BE8162D05E /* SubmitView.swift */; };
+		5E914047F10579558BE6BBB4 /* SavedHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D222F8AEDDCE4043CE7BDE /* SavedHighlight.swift */; };
+		6773C4D40FC1EC817D68023E /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C811180EFD6CB530433C34 /* ResultView.swift */; };
+		7D973CCA664E5D7B3AFA52B0 /* QuickPodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D5BCD5695842CAD20BD3B /* QuickPodApp.swift */; };
+		8D87F7B17A1EF3B2D5AEFF84 /* JobStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A8AB7251ACF8C9CD0D70B7 /* JobStatusView.swift */; };
+		A79354B11E8D79103C8508A5 /* AudioPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DA6DA0C35B08C7040ECBD1 /* AudioPlayerView.swift */; };
+		A9284AB2F558EB7B3BC87AA3 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE76DFC81487679C5E66F16 /* LibraryView.swift */; };
+		ADB5F29956FB1C8CE5EE9792 /* LibraryPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D17C422A33CC899E1C8BD88 /* LibraryPlayerView.swift */; };
+		B5377BBBB7D447E6C369AECE /* AudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D9B27F5D12D4A8EE25B0E3 /* AudioPlayerManager.swift */; };
+		BC926DC8F4BB56B9AFA4C4E7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC71FA6638938ED28A476552 /* ContentView.swift */; };
+		C0C23F1BC9F4B7559F70795D /* HighlightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315EAD06FE2E2BF2FD1274D5 /* HighlightViewModel.swift */; };
+		C24D82866598290DD6F7CC6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 059A70446A62823CFC3A1BF4 /* Assets.xcassets */; };
+		C586B3949AC007BE80810BB7 /* QuickPodAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8568C6AF425F2C9C3CD41FBA /* QuickPodAPI.swift */; };
+		BB11223344556677889900BB /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11223344556677889900AA /* AuthStore.swift */; };
+		DD11223344556677889900DD /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11223344556677889900CC /* AuthView.swift */; };
+		D0C72F5D35B9245220BF28A0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B569F9F78C88F6AED8A6A082 /* SettingsView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		03D222F8AEDDCE4043CE7BDE /* SavedHighlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedHighlight.swift; sourceTree = "<group>"; };
+		AA11223344556677889900AA /* AuthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
+		CC11223344556677889900CC /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		059A70446A62823CFC3A1BF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		08A8AB7251ACF8C9CD0D70B7 /* JobStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobStatusView.swift; sourceTree = "<group>"; };
+		24D9B27F5D12D4A8EE25B0E3 /* AudioPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerManager.swift; sourceTree = "<group>"; };
+		265D5BCD5695842CAD20BD3B /* QuickPodApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPodApp.swift; sourceTree = "<group>"; };
+		315EAD06FE2E2BF2FD1274D5 /* HighlightViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightViewModel.swift; sourceTree = "<group>"; };
+		36E5FEDEDE7319BE8162D05E /* SubmitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitView.swift; sourceTree = "<group>"; };
+		4D17C422A33CC899E1C8BD88 /* LibraryPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPlayerView.swift; sourceTree = "<group>"; };
+		53DB30DD9566BDBDD26D6B8E /* APIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModels.swift; sourceTree = "<group>"; };
+		8568C6AF425F2C9C3CD41FBA /* QuickPodAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPodAPI.swift; sourceTree = "<group>"; };
+		8EE76DFC81487679C5E66F16 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		ADC83CE5E372188E423B881C /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
+		B569F9F78C88F6AED8A6A082 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		BC71FA6638938ED28A476552 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BFC0A27E9159C3A87D022E14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C8C811180EFD6CB530433C34 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		D9DA6DA0C35B08C7040ECBD1 /* AudioPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerView.swift; sourceTree = "<group>"; };
+		E071325404336A67437FCEE5 /* QuickPod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickPod.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F94540A8C98C4BF16B241CB3 /* LibraryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryStore.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		317459222D003DF38FC1533C /* QuickPod */ = {
+			isa = PBXGroup;
+			children = (
+				059A70446A62823CFC3A1BF4 /* Assets.xcassets */,
+				BFC0A27E9159C3A87D022E14 /* Info.plist */,
+				265D5BCD5695842CAD20BD3B /* QuickPodApp.swift */,
+				59CA75DD6493144939974487 /* Models */,
+				7A95F6AA68C238A897346929 /* Utilities */,
+				6B8F8666DB085AF068C35AC4 /* ViewModels */,
+				DAAB7D220A841E4754E691DA /* Views */,
+			);
+			path = QuickPod;
+			sourceTree = "<group>";
+		};
+		426C85CC70CDABC743362598 = {
+			isa = PBXGroup;
+			children = (
+				317459222D003DF38FC1533C /* QuickPod */,
+				A388CA30F64B4E152D05BEBD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		59CA75DD6493144939974487 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				53DB30DD9566BDBDD26D6B8E /* APIModels.swift */,
+				F94540A8C98C4BF16B241CB3 /* LibraryStore.swift */,
+				8568C6AF425F2C9C3CD41FBA /* QuickPodAPI.swift */,
+				03D222F8AEDDCE4043CE7BDE /* SavedHighlight.swift */,
+				AA11223344556677889900AA /* AuthStore.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6B8F8666DB085AF068C35AC4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				24D9B27F5D12D4A8EE25B0E3 /* AudioPlayerManager.swift */,
+				315EAD06FE2E2BF2FD1274D5 /* HighlightViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		7A95F6AA68C238A897346929 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				ADC83CE5E372188E423B881C /* TimeFormatter.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A388CA30F64B4E152D05BEBD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E071325404336A67437FCEE5 /* QuickPod.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DAAB7D220A841E4754E691DA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D9DA6DA0C35B08C7040ECBD1 /* AudioPlayerView.swift */,
+				BC71FA6638938ED28A476552 /* ContentView.swift */,
+				08A8AB7251ACF8C9CD0D70B7 /* JobStatusView.swift */,
+				4D17C422A33CC899E1C8BD88 /* LibraryPlayerView.swift */,
+				8EE76DFC81487679C5E66F16 /* LibraryView.swift */,
+				C8C811180EFD6CB530433C34 /* ResultView.swift */,
+				B569F9F78C88F6AED8A6A082 /* SettingsView.swift */,
+				36E5FEDEDE7319BE8162D05E /* SubmitView.swift */,
+				CC11223344556677889900CC /* AuthView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FECCDD3DFF39BB6B3750CFD0 /* QuickPod */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A7ED96A9111E5C42663AB04 /* Build configuration list for PBXNativeTarget "QuickPod" */;
+			buildPhases = (
+				710BC7560EE6D24A5C5D42B7 /* Sources */,
+				6D978732F28666F9ECD7B3D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuickPod;
+			packageProductDependencies = (
+			);
+			productName = QuickPod;
+			productReference = E071325404336A67437FCEE5 /* QuickPod.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		11A17D7EB4ACE2372BB599B1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = 2DE49202764A98735B2E3C68 /* Build configuration list for PBXProject "QuickPod" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 426C85CC70CDABC743362598;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A388CA30F64B4E152D05BEBD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FECCDD3DFF39BB6B3750CFD0 /* QuickPod */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6D978732F28666F9ECD7B3D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C24D82866598290DD6F7CC6A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		710BC7560EE6D24A5C5D42B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41E700C3D0704D07E4DCEA89 /* APIModels.swift in Sources */,
+				B5377BBBB7D447E6C369AECE /* AudioPlayerManager.swift in Sources */,
+				A79354B11E8D79103C8508A5 /* AudioPlayerView.swift in Sources */,
+				BC926DC8F4BB56B9AFA4C4E7 /* ContentView.swift in Sources */,
+				C0C23F1BC9F4B7559F70795D /* HighlightViewModel.swift in Sources */,
+				8D87F7B17A1EF3B2D5AEFF84 /* JobStatusView.swift in Sources */,
+				ADB5F29956FB1C8CE5EE9792 /* LibraryPlayerView.swift in Sources */,
+				541F94F6FBE9035459FAED13 /* LibraryStore.swift in Sources */,
+				A9284AB2F558EB7B3BC87AA3 /* LibraryView.swift in Sources */,
+				C586B3949AC007BE80810BB7 /* QuickPodAPI.swift in Sources */,
+				BB11223344556677889900BB /* AuthStore.swift in Sources */,
+				DD11223344556677889900DD /* AuthView.swift in Sources */,
+				7D973CCA664E5D7B3AFA52B0 /* QuickPodApp.swift in Sources */,
+				6773C4D40FC1EC817D68023E /* ResultView.swift in Sources */,
+				5E914047F10579558BE6BBB4 /* SavedHighlight.swift in Sources */,
+				D0C72F5D35B9245220BF28A0 /* SettingsView.swift in Sources */,
+				5B8AAD910D9E2F7D47C83790 /* SubmitView.swift in Sources */,
+				4BE76A561F2067A37B875304 /* TimeFormatter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		12327E88BB6A8B215BC129E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SB585PT9FC;
+				INFOPLIST_FILE = QuickPod/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.quickpod.app;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		185678DD8DF36A623ED6EC66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		9F798B3DCD3C3BF0DC08CBED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		B34F1C388626A5395DA6B631 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SB585PT9FC;
+				INFOPLIST_FILE = QuickPod/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.quickpod.app;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2DE49202764A98735B2E3C68 /* Build configuration list for PBXProject "QuickPod" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				185678DD8DF36A623ED6EC66 /* Debug */,
+				9F798B3DCD3C3BF0DC08CBED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		3A7ED96A9111E5C42663AB04 /* Build configuration list for PBXNativeTarget "QuickPod" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B34F1C388626A5395DA6B631 /* Debug */,
+				12327E88BB6A8B215BC129E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 11A17D7EB4ACE2372BB599B1 /* Project object */;
+}

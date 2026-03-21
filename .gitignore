@@ -1,0 +1,49 @@
+# Xcode
+*.xcuserstate
+*.xccheckout
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# User-specific Xcode settings
+xcuserdata/
+*.xcuserdata/
+
+# Build output
+build/
+DerivedData/
+*.o
+*.d
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Packages/
+Package.resolved
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/Build/
+Carthage/Checkouts/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# OS
+.DS_Store
+*.DS_Store
+
+# Secrets / provisioning
+*.p12
+*.mobileprovision
+*.provisionprofile
+AuthKey_*.p8
+ExportOptions.plist
