@@ -8,6 +8,7 @@ struct ContentView: View {
     @ObservedObject private var notificationManager = NotificationManager.shared
     @Environment(\.scenePhase) private var scenePhase
     @State private var showSettings = false
+    @State private var showOnboarding = !UserDefaults.standard.bool(forKey: "quickpod_onboarding_done")
 
     var body: some View {
         Group {
@@ -17,6 +18,12 @@ struct ContentView: View {
                 VerificationView(email: authStore.email ?? "")
             } else {
                 appTabs
+            }
+        }
+        .fullScreenCover(isPresented: $showOnboarding) {
+            OnboardingView {
+                UserDefaults.standard.set(true, forKey: "quickpod_onboarding_done")
+                showOnboarding = false
             }
         }
         .onChange(of: scenePhase) { _, newPhase in
