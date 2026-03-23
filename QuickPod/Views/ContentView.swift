@@ -65,6 +65,7 @@ struct ContentView: View {
                     ToolbarItem(placement: .topBarLeading) {
                         if viewModel.jobId != nil {
                             Button("New") { viewModel.reset() }
+                                .disabled(viewModel.jobStatus == .queued || viewModel.jobStatus == .running)
                         }
                     }
                     ToolbarItem(placement: .topBarTrailing) {

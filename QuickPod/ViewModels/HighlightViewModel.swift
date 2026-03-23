@@ -22,28 +22,8 @@ final class HighlightViewModel: ObservableObject {
 
     private static let persistedJobIdKey = "quickpod_last_job_id"
 
-    // MARK: - Stage Messages
-
-    private static let stageMessages: [JobStatus: [String]] = [
-        .queued: [
-            "Warming up the engines...",
-            "Your request is in the queue...",
-            "Preparing to analyze your podcast...",
-        ],
-        .running: [
-            "Downloading and transcribing audio...",
-            "Analyzing transcript for key moments...",
-            "Selecting the best highlights...",
-            "Composing your highlight reel...",
-            "Almost there, finalizing output...",
-        ],
-    ]
-
     @Published var stageMessage: String = "Preparing..."
-    @Published var elapsedSeconds: Int = 0
-    private var messageIndex = 0
     private var messageTimer: Task<Void, Never>?
-    private var elapsedTimer: Task<Void, Never>?
 
     // MARK: - Submit
 
@@ -79,7 +59,6 @@ final class HighlightViewModel: ObservableObject {
     func startPolling() {
         pollingTask?.cancel()
         startMessageRotation()
-        startElapsedTimer()
 
         let deadline = Date().addingTimeInterval(Self.pollTimeout)
 
@@ -87,7 +66,6 @@ final class HighlightViewModel: ObservableObject {
             while !Task.isCancelled {
                 if Date() > deadline {
                     messageTimer?.cancel()
-                    elapsedTimer?.cancel()
                     errorMessage = "The request is taking too long. Please try again later."
                     break
                 }
@@ -97,10 +75,12 @@ final class HighlightViewModel: ObservableObject {
                     let detail = try await api.getHighlight(jobId: id)
                     jobStatus = detail.status
                     jobDetail = detail
+                    if let stage = detail.stage {
+                        stageMessage = stage
+                    }
 
                     if detail.status == .succeeded || detail.status == .failed {
                         messageTimer?.cancel()
-                        elapsedTimer?.cancel()
                         if detail.status == .succeeded, let audioPath = detail.outputAudioUrl {
                             setupPlayer(audioPath: audioPath)
                         }
@@ -123,8 +103,6 @@ final class HighlightViewModel: ObservableObject {
         pollingTask = nil
         messageTimer?.cancel()
         messageTimer = nil
-        elapsedTimer?.cancel()
-        elapsedTimer = nil
     }
 
     /// Restart polling if a job is in progress (called when app returns to foreground).
@@ -147,37 +125,12 @@ final class HighlightViewModel: ObservableObject {
         guard jobId == nil,
               let savedId = UserDefaults.standard.string(forKey: Self.persistedJobIdKey) else { return }
         jobId = savedId
+        jobStatus = .queued  // Show progress UI immediately while first poll is in flight
         startPolling()
     }
 
-    private func startElapsedTimer() {
-        elapsedTimer?.cancel()
-        elapsedSeconds = 0
-        elapsedTimer = Task {
-            while !Task.isCancelled {
-                try? await Task.sleep(for: .seconds(1))
-                elapsedSeconds += 1
-            }
-        }
-    }
-
     private func startMessageRotation() {
-        messageIndex = 0
-        updateStageMessage()
-        messageTimer?.cancel()
-        messageTimer = Task {
-            while !Task.isCancelled {
-                try? await Task.sleep(for: .seconds(4))
-                messageIndex += 1
-                updateStageMessage()
-            }
-        }
-    }
-
-    private func updateStageMessage() {
-        let status = jobStatus ?? .queued
-        let messages = Self.stageMessages[status] ?? Self.stageMessages[.queued]!
-        stageMessage = messages[messageIndex % messages.count]
+        stageMessage = "Starting..."
     }
 
     // MARK: - Audio Player
@@ -249,11 +202,11 @@ final class HighlightViewModel: ObservableObject {
         isDownloading = false
         savedLocally = false
         stageMessage = "Preparing..."
-        elapsedSeconds = 0
     }
 
     deinit {
         pollingTask?.cancel()
         messageTimer?.cancel()
+
     }
 }

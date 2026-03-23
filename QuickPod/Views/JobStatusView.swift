@@ -3,24 +3,6 @@ import SwiftUI
 struct JobStatusView: View {
     @ObservedObject var viewModel: HighlightViewModel
 
-    // Soft time estimate: progress ring fills over this many seconds.
-    // Capped at 95% so it never falsely reaches 100% before the job finishes.
-    private static let estimatedSeconds: Double = 180
-
-    private var progressFraction: Double {
-        guard viewModel.jobStatus == .running else { return 0 }
-        return min(Double(viewModel.elapsedSeconds) / Self.estimatedSeconds, 0.95)
-    }
-
-    private var elapsedLabel: String {
-        let s = viewModel.elapsedSeconds
-        guard s > 0 else { return "" }
-        if s < 60 { return "\(s)s" }
-        let m = s / 60
-        let rem = s % 60
-        return rem == 0 ? "\(m)m" : "\(m)m \(rem)s"
-    }
-
     private var stageName: String {
         switch viewModel.jobStatus {
         case .queued:    return "Starting soon"
@@ -41,6 +23,8 @@ struct JobStatusView: View {
         }
     }
 
+    @State private var spinDegrees: Double = 0
+
     var body: some View {
         VStack(spacing: 32) {
             Spacer()
@@ -52,14 +36,18 @@ struct JobStatusView: View {
                     .stroke(Color.accentColor.opacity(0.12), lineWidth: 6)
                     .frame(width: 120, height: 120)
 
-                // Filled arc (only shown while running)
+                // Spinning arc while running
                 if viewModel.jobStatus == .running {
                     Circle()
-                        .trim(from: 0, to: progressFraction)
+                        .trim(from: 0, to: 0.25)
                         .stroke(Color.accentColor, style: StrokeStyle(lineWidth: 6, lineCap: .round))
                         .frame(width: 120, height: 120)
-                        .rotationEffect(.degrees(-90))
-                        .animation(.linear(duration: 1), value: progressFraction)
+                        .rotationEffect(.degrees(spinDegrees))
+                        .onAppear {
+                            withAnimation(.linear(duration: 1.2).repeatForever(autoreverses: false)) {
+                                spinDegrees = 360
+                            }
+                        }
                 }
 
                 // Icon
@@ -82,27 +70,15 @@ struct JobStatusView: View {
                     .animation(.easeInOut(duration: 0.3), value: viewModel.stageMessage)
             }
 
-            // Elapsed time + estimate (only while active)
+            // Estimate label (only while active)
             if viewModel.jobStatus == .queued || viewModel.jobStatus == .running {
-                VStack(spacing: 4) {
-                    if !elapsedLabel.isEmpty {
-                        HStack(spacing: 6) {
-                            Image(systemName: "timer")
-                                .font(.caption)
-                            Text(elapsedLabel)
-                                .font(.subheadline.monospacedDigit())
-                        }
-                        .foregroundStyle(.primary)
-                    }
-
-                    Text("Typically 2–5 minutes")
-                        .font(.caption)
-                        .foregroundStyle(.tertiary)
-                }
-                .padding(.vertical, 8)
-                .padding(.horizontal, 20)
-                .background(Color(.secondarySystemBackground))
-                .clipShape(Capsule())
+                Text("Typically 2–5 minutes")
+                    .font(.caption)
+                    .foregroundStyle(.tertiary)
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 20)
+                    .background(Color(.secondarySystemBackground))
+                    .clipShape(Capsule())
             }
 
             if let error = viewModel.errorMessage {

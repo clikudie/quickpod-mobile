@@ -44,12 +44,18 @@ final class NotificationManager: NSObject, ObservableObject {
 }
 
 extension NotificationManager: UNUserNotificationCenterDelegate {
-    // App is foregrounded — polling already updated the UI, suppress the notification
+    // App is foregrounded — suppress the banner but still handle the job_id so the
+    // UI updates even if polling was stopped (e.g. user tapped New mid-job).
     nonisolated func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         willPresent notification: UNNotification,
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
     ) {
+        if let jobId = notification.request.content.userInfo["job_id"] as? String {
+            Task { @MainActor in
+                pendingJobId = jobId
+            }
+        }
         completionHandler([])
     }
 

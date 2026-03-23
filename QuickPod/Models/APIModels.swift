@@ -34,6 +34,7 @@ struct JobDetail: Codable {
     let summaryTranscript: String?
     let segments: [Segment]?
     let shareClips: [ShareClip]?
+    let stage: String?
 }
 
 struct Segment: Codable, Identifiable {
