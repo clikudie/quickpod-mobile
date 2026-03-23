@@ -37,6 +37,8 @@ struct ContentView: View {
             if let jobId = notificationManager.pendingJobId {
                 viewModel.openJob(jobId: jobId)
                 notificationManager.pendingJobId = nil
+            } else {
+                viewModel.restoreLastJobIfNeeded()
             }
         }
         .onChange(of: notificationManager.pendingJobId) { _, jobId in

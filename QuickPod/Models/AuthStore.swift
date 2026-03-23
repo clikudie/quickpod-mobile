@@ -39,6 +39,7 @@ final class AuthStore: ObservableObject {
         self.email      = email
         isAuthenticated = true
         LibraryStore.shared.switchUser(userId: userId)
+        NotificationManager.shared.sendTokenIfAuthenticated()
     }
 
     func markVerified() {

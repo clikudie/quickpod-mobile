@@ -4,6 +4,7 @@ struct ResultView: View {
     @ObservedObject var viewModel: HighlightViewModel
 
     @State private var showFullTranscript = false
+    @State private var summaryCopied = false
 
     private var detail: JobDetail? { viewModel.jobDetail }
 
@@ -53,6 +54,16 @@ struct ResultView: View {
                                 Label("Summary", systemImage: "doc.text")
                                     .font(.headline)
                                 Spacer()
+                                Button {
+                                    UIPasteboard.general.string = summary
+                                    summaryCopied = true
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                        summaryCopied = false
+                                    }
+                                } label: {
+                                    Image(systemName: summaryCopied ? "checkmark" : "doc.on.doc")
+                                        .foregroundStyle(summaryCopied ? .green : .secondary)
+                                }
                                 Button(showFullTranscript ? "Show less" : "Show more") {
                                     withAnimation { showFullTranscript.toggle() }
                                 }

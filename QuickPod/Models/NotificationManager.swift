@@ -8,6 +8,9 @@ final class NotificationManager: NSObject, ObservableObject {
     /// Set when the user taps a push notification; ContentView watches this to navigate.
     @Published var pendingJobId: String?
 
+    /// Last device token received from APNs. Kept so it can be re-sent after login.
+    private(set) var deviceToken: String?
+
     private override init() {
         super.init()
         UNUserNotificationCenter.current().delegate = self
@@ -27,6 +30,13 @@ final class NotificationManager: NSObject, ObservableObject {
 
     func registerDeviceToken(_ data: Data) {
         let token = data.map { String(format: "%02x", $0) }.joined()
+        deviceToken = token
+        sendTokenIfAuthenticated()
+    }
+
+    /// Called after login/register so the token is sent even if APNs callback fired first.
+    func sendTokenIfAuthenticated() {
+        guard let token = deviceToken, QuickPodAPI.shared.token != nil else { return }
         Task {
             try? await QuickPodAPI.shared.registerDeviceToken(token)
         }
@@ -34,24 +44,27 @@ final class NotificationManager: NSObject, ObservableObject {
 }
 
 extension NotificationManager: UNUserNotificationCenterDelegate {
-    // Show banner + sound even when the app is foregrounded
+    // App is foregrounded — polling already updated the UI, suppress the notification
     nonisolated func userNotificationCenter(
         _ center: UNUserNotificationCenter,
-        willPresent notification: UNNotification
-    ) async -> UNNotificationPresentationOptions {
-        return [.banner, .sound]
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+    ) {
+        completionHandler([])
     }
 
     // User tapped a notification
     nonisolated func userNotificationCenter(
         _ center: UNUserNotificationCenter,
-        didReceive response: UNNotificationResponse
-    ) async {
+        didReceive response: UNNotificationResponse,
+        withCompletionHandler completionHandler: @escaping () -> Void
+    ) {
         let userInfo = response.notification.request.content.userInfo
         if let jobId = userInfo["job_id"] as? String {
-            await MainActor.run {
+            Task { @MainActor in
                 pendingJobId = jobId
             }
         }
+        completionHandler()
     }
 }

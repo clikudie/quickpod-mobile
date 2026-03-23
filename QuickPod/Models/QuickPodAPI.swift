@@ -61,6 +61,10 @@ final class QuickPodAPI {
         let _: [String: String] = try await post(path: "/devices/token", body: DeviceTokenRequest(token: token))
     }
 
+    func deleteAccount() async throws {
+        let _: [String: String] = try await delete(path: "/auth/account")
+    }
+
     func forgotPassword(email: String) async throws {
         let _: [String: String] = try await post(path: "/auth/forgot-password", body: ForgotPasswordRequest(email: email), authenticated: false)
     }
@@ -110,6 +114,16 @@ final class QuickPodAPI {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try encoder.encode(body)
         if authenticated { addAuth(&request) }
+        return try await execute(request)
+    }
+
+    private func delete<T: Decodable>(path: String) async throws -> T {
+        guard let url = URL(string: baseURL + path) else {
+            throw APIError.invalidURL
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        addAuth(&request)
         return try await execute(request)
     }
 

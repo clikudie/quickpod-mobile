@@ -6,6 +6,9 @@ struct SettingsView: View {
     @State private var serverURL: String = QuickPodAPI.shared.baseURL
     @State private var healthStatus: HealthStatus = .unknown
     @State private var isChecking = false
+    @State private var showDeleteConfirm = false
+    @State private var isDeleting = false
+    @State private var deleteError: String?
 
     private enum HealthStatus {
         case unknown, healthy, unhealthy(String)
@@ -73,9 +76,44 @@ struct SettingsView: View {
                 } header: {
                     Text("About")
                 }
+
+                Section {
+                    Button(role: .destructive) {
+                        showDeleteConfirm = true
+                    } label: {
+                        HStack {
+                            Text(isDeleting ? "Deleting…" : "Delete Account")
+                            Spacer()
+                            if isDeleting { ProgressView().controlSize(.small) }
+                        }
+                    }
+                    .disabled(isDeleting)
+
+                    if let error = deleteError {
+                        Text(error)
+                            .font(.caption)
+                            .foregroundStyle(.red)
+                    }
+                } header: {
+                    Text("Danger Zone")
+                } footer: {
+                    Text("Permanently deletes your account and all associated data. This cannot be undone.")
+                }
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
+            .confirmationDialog(
+                "Delete Account",
+                isPresented: $showDeleteConfirm,
+                titleVisibility: .visible
+            ) {
+                Button("Delete Account", role: .destructive) {
+                    Task { await deleteAccount() }
+                }
+                Button("Cancel", role: .cancel) {}
+            } message: {
+                Text("This will permanently delete your account and all your data. This cannot be undone.")
+            }
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {
@@ -91,6 +129,18 @@ struct SettingsView: View {
         let trimmed = serverURL.trimmingCharacters(in: .whitespacesAndNewlines)
         // Strip trailing slash
         QuickPodAPI.shared.baseURL = trimmed.hasSuffix("/") ? String(trimmed.dropLast()) : trimmed
+    }
+
+    private func deleteAccount() async {
+        isDeleting = true
+        deleteError = nil
+        do {
+            try await QuickPodAPI.shared.deleteAccount()
+            AuthStore.shared.signOut()
+        } catch {
+            deleteError = error.localizedDescription
+            isDeleting = false
+        }
     }
 
     private func testConnection() {

@@ -20,6 +20,8 @@ final class HighlightViewModel: ObservableObject {
     private let api = QuickPodAPI.shared
     private var pollingTask: Task<Void, Never>?
 
+    private static let persistedJobIdKey = "quickpod_last_job_id"
+
     // MARK: - Stage Messages
 
     private static let stageMessages: [JobStatus: [String]] = [
@@ -59,6 +61,7 @@ final class HighlightViewModel: ObservableObject {
             do {
                 let response = try await api.createHighlight(url: url)
                 jobId = response.jobId
+                UserDefaults.standard.set(response.jobId, forKey: Self.persistedJobIdKey)
                 jobStatus = response.status
                 isSubmitting = false
                 startPolling()
@@ -135,6 +138,15 @@ final class HighlightViewModel: ObservableObject {
         guard self.jobId != jobId else { return }
         reset()
         self.jobId = jobId
+        UserDefaults.standard.set(jobId, forKey: Self.persistedJobIdKey)
+        startPolling()
+    }
+
+    /// Called from ContentView.onAppear to restore the last job after an app kill.
+    func restoreLastJobIfNeeded() {
+        guard jobId == nil,
+              let savedId = UserDefaults.standard.string(forKey: Self.persistedJobIdKey) else { return }
+        jobId = savedId
         startPolling()
     }
 
@@ -228,6 +240,7 @@ final class HighlightViewModel: ObservableObject {
         stopPolling()
         playerManager.stop()
 
+        UserDefaults.standard.removeObject(forKey: Self.persistedJobIdKey)
         remoteAudioURL = nil
         jobId = nil
         jobStatus = nil
