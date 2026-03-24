@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFF0F3"/>
+      <stop offset="100%" stop-color="#FFE0E6"/>
+    </linearGradient>
+    <linearGradient id="circle-fill" x1="512" y1="80" x2="512" y2="944" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF5C7A"/>
+      <stop offset="100%" stop-color="#E8203E"/>
+    </linearGradient>
+    <clipPath id="circle-clip">
+      <circle cx="512" cy="512" r="410"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+
+  <!-- Main circle -->
+  <circle cx="512" cy="512" r="410" fill="url(#circle-fill)"/>
+
+  <!-- Waveform bars clipped to circle — 7 bars, bell-curve heights -->
+  <!-- Bar w=44, gap=26, total=7*44+6*26=308+156=464, startX=512-232=280 -->
+  <g clip-path="url(#circle-clip)" fill="white">
+    <rect x="280" y="452" width="44" height="120" rx="22"/>
+    <rect x="350" y="382" width="44" height="260" rx="22"/>
+    <rect x="420" y="302" width="44" height="420" rx="22"/>
+    <rect x="490" y="252" width="44" height="520" rx="22"/>
+    <rect x="560" y="302" width="44" height="420" rx="22"/>
+    <rect x="630" y="382" width="44" height="260" rx="22"/>
+    <rect x="700" y="452" width="44" height="120" rx="22"/>
+  </g>
+</svg>
