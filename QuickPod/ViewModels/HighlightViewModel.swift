@@ -27,6 +27,38 @@ final class HighlightViewModel: ObservableObject {
 
     // MARK: - Submit
 
+    func submitFile(url: URL) {
+        reset()
+        isSubmitting = true
+        errorMessage = nil
+
+        Task {
+            do {
+                // Copy to temp dir so security-scoped access isn't needed during the upload
+                let tempURL = FileManager.default.temporaryDirectory
+                    .appendingPathComponent(url.lastPathComponent)
+                if FileManager.default.fileExists(atPath: tempURL.path) {
+                    try FileManager.default.removeItem(at: tempURL)
+                }
+                _ = url.startAccessingSecurityScopedResource()
+                try FileManager.default.copyItem(at: url, to: tempURL)
+                url.stopAccessingSecurityScopedResource()
+
+                let response = try await api.uploadAudio(fileURL: tempURL)
+                try? FileManager.default.removeItem(at: tempURL)
+
+                jobId = response.jobId
+                UserDefaults.standard.set(response.jobId, forKey: Self.persistedJobIdKey)
+                jobStatus = response.status
+                isSubmitting = false
+                startPolling()
+            } catch {
+                isSubmitting = false
+                errorMessage = error.localizedDescription
+            }
+        }
+    }
+
     func submit(url: String) {
         guard !url.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
             errorMessage = "Please enter a podcast URL"

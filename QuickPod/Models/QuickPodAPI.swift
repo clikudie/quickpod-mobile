@@ -80,6 +80,43 @@ final class QuickPodAPI {
         return try await post(path: "/highlight", body: body)
     }
 
+    func uploadAudio(fileURL: URL) async throws -> HighlightResponse {
+        let boundary = UUID().uuidString
+        guard let url = URL(string: baseURL + "/highlight") else {
+            throw APIError.invalidURL
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 120
+        addAuth(&request)
+
+        let filename = fileURL.lastPathComponent
+        var body = Data()
+        body.append("--\(boundary)\r\n".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n".data(using: .utf8)!)
+        body.append("Content-Type: \(audioMimeType(for: fileURL))\r\n\r\n".data(using: .utf8)!)
+        body.append(try Data(contentsOf: fileURL))
+        body.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+        request.httpBody = body
+
+        return try await execute(request)
+    }
+
+    private func audioMimeType(for url: URL) -> String {
+        switch url.pathExtension.lowercased() {
+        case "mp3":        return "audio/mpeg"
+        case "m4a", "mp4": return "audio/mp4"
+        case "wav":        return "audio/wav"
+        case "aac":        return "audio/aac"
+        case "ogg":        return "audio/ogg"
+        case "flac":       return "audio/flac"
+        case "aiff", "aif": return "audio/aiff"
+        default:           return "audio/mpeg"
+        }
+    }
+
     func getHighlight(jobId: String) async throws -> JobDetail {
         return try await get(path: "/highlight/\(jobId)")
     }

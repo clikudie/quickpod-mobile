@@ -1,8 +1,10 @@
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct SubmitView: View {
     @ObservedObject var viewModel: HighlightViewModel
     @State private var podcastURL = ""
+    @State private var showFilePicker = false
 
     var body: some View {
         ScrollView {
@@ -64,8 +66,48 @@ struct SubmitView: View {
                 .buttonStyle(.borderedProminent)
                 .disabled(viewModel.isSubmitting || podcastURL.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 .padding(.horizontal)
+
+                // Divider
+                HStack(spacing: 12) {
+                    Rectangle()
+                        .frame(height: 1)
+                        .foregroundStyle(Color(.separator))
+                    Text("or")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                    Rectangle()
+                        .frame(height: 1)
+                        .foregroundStyle(Color(.separator))
+                }
+                .padding(.horizontal)
+
+                // File upload
+                Button {
+                    showFilePicker = true
+                } label: {
+                    Label("Upload Audio File", systemImage: "square.and.arrow.up")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                }
+                .buttonStyle(.bordered)
+                .disabled(viewModel.isSubmitting)
+                .padding(.horizontal)
             }
             .padding(.vertical)
+        }
+        .fileImporter(
+            isPresented: $showFilePicker,
+            allowedContentTypes: [.audio],
+            allowsMultipleSelection: false
+        ) { result in
+            switch result {
+            case .success(let urls):
+                guard let fileURL = urls.first else { return }
+                viewModel.submitFile(url: fileURL)
+            case .failure(let error):
+                viewModel.errorMessage = error.localizedDescription
+            }
         }
     }
 }
