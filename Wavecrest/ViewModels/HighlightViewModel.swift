@@ -17,10 +17,10 @@ final class HighlightViewModel: ObservableObject {
     @Published var isDownloading = false
     @Published var savedLocally = false
 
-    private let api = QuickPodAPI.shared
+    private let api = WavecrestAPI.shared
     private var pollingTask: Task<Void, Never>?
 
-    private static let persistedJobIdKey = "quickpod_last_job_id"
+    private static let persistedJobIdKey = "wavecrest_last_job_id"
 
     @Published var stageMessage: String = "Preparing..."
     private var messageTimer: Task<Void, Never>?
@@ -185,7 +185,7 @@ final class HighlightViewModel: ObservableObject {
         guard let remoteURL = remoteAudioURL, let id = jobId else { return }
 
         let userId = AuthStore.shared.userId ?? "unknown"
-        let filename = "quickpod-\(userId)-\(id).mp3"
+        let filename = "wavecrest-\(userId)-\(id).mp3"
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let fileURL = documentsURL.appendingPathComponent(filename)
 

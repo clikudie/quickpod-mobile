@@ -15,7 +15,7 @@ final class LibraryStore: ObservableObject {
 
     func switchUser(userId: String?) {
         if let userId {
-            fileURL = docs.appendingPathComponent("quickpod-library-\(userId).json")
+            fileURL = docs.appendingPathComponent("wavecrest-library-\(userId).json")
         } else {
             fileURL = nil
         }

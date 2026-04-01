@@ -14,7 +14,10 @@
       "Bash(which node:*)",
       "Bash(python3:*)",
       "Bash(pip3 install:*)",
-      "Bash(rsvg-convert:*)"
+      "Bash(rsvg-convert:*)",
+      "Bash(cd:*)",
+      "Bash(git:*)",
+      "Bash(curl:*)"
     ]
   }
 }

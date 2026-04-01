@@ -3,7 +3,7 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
 
-    @State private var serverURL: String = QuickPodAPI.shared.baseURL
+    @State private var serverURL: String = WavecrestAPI.shared.baseURL
     @State private var healthStatus: HealthStatus = .unknown
     @State private var isChecking = false
     @State private var showDeleteConfirm = false
@@ -128,14 +128,14 @@ struct SettingsView: View {
     private func save() {
         let trimmed = serverURL.trimmingCharacters(in: .whitespacesAndNewlines)
         // Strip trailing slash
-        QuickPodAPI.shared.baseURL = trimmed.hasSuffix("/") ? String(trimmed.dropLast()) : trimmed
+        WavecrestAPI.shared.baseURL = trimmed.hasSuffix("/") ? String(trimmed.dropLast()) : trimmed
     }
 
     private func deleteAccount() async {
         isDeleting = true
         deleteError = nil
         do {
-            try await QuickPodAPI.shared.deleteAccount()
+            try await WavecrestAPI.shared.deleteAccount()
             AuthStore.shared.signOut()
         } catch {
             deleteError = error.localizedDescription
@@ -150,7 +150,7 @@ struct SettingsView: View {
 
         Task {
             do {
-                let response = try await QuickPodAPI.shared.healthCheck()
+                let response = try await WavecrestAPI.shared.healthCheck()
                 healthStatus = response.status == "ok" ? .healthy : .unhealthy("Unexpected status: \(response.status)")
             } catch {
                 healthStatus = .unhealthy(error.localizedDescription)

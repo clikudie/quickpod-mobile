@@ -13,7 +13,7 @@
 		5B8AAD910D9E2F7D47C83790 /* SubmitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E5FEDEDE7319BE8162D05E /* SubmitView.swift */; };
 		5E914047F10579558BE6BBB4 /* SavedHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D222F8AEDDCE4043CE7BDE /* SavedHighlight.swift */; };
 		6773C4D40FC1EC817D68023E /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C811180EFD6CB530433C34 /* ResultView.swift */; };
-		7D973CCA664E5D7B3AFA52B0 /* QuickPodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D5BCD5695842CAD20BD3B /* QuickPodApp.swift */; };
+		7D973CCA664E5D7B3AFA52B0 /* WavecrestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265D5BCD5695842CAD20BD3B /* WavecrestApp.swift */; };
 		8D87F7B17A1EF3B2D5AEFF84 /* JobStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A8AB7251ACF8C9CD0D70B7 /* JobStatusView.swift */; };
 		A79354B11E8D79103C8508A5 /* AudioPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DA6DA0C35B08C7040ECBD1 /* AudioPlayerView.swift */; };
 		A9284AB2F558EB7B3BC87AA3 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE76DFC81487679C5E66F16 /* LibraryView.swift */; };
@@ -24,7 +24,7 @@
 		BC926DC8F4BB56B9AFA4C4E7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC71FA6638938ED28A476552 /* ContentView.swift */; };
 		C0C23F1BC9F4B7559F70795D /* HighlightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315EAD06FE2E2BF2FD1274D5 /* HighlightViewModel.swift */; };
 		C24D82866598290DD6F7CC6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 059A70446A62823CFC3A1BF4 /* Assets.xcassets */; };
-		C586B3949AC007BE80810BB7 /* QuickPodAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8568C6AF425F2C9C3CD41FBA /* QuickPodAPI.swift */; };
+		C586B3949AC007BE80810BB7 /* WavecrestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8568C6AF425F2C9C3CD41FBA /* WavecrestAPI.swift */; };
 		D0C72F5D35B9245220BF28A0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B569F9F78C88F6AED8A6A082 /* SettingsView.swift */; };
 		DD11223344556677889900DD /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11223344556677889900CC /* AuthView.swift */; };
 		EE11223344556677889900EE /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF11223344556677889900FF /* VerificationView.swift */; };
@@ -38,16 +38,16 @@
 		059A70446A62823CFC3A1BF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08A8AB7251ACF8C9CD0D70B7 /* JobStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobStatusView.swift; sourceTree = "<group>"; };
 		24D9B27F5D12D4A8EE25B0E3 /* AudioPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerManager.swift; sourceTree = "<group>"; };
-		265D5BCD5695842CAD20BD3B /* QuickPodApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPodApp.swift; sourceTree = "<group>"; };
+		265D5BCD5695842CAD20BD3B /* WavecrestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WavecrestApp.swift; sourceTree = "<group>"; };
 		315EAD06FE2E2BF2FD1274D5 /* HighlightViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightViewModel.swift; sourceTree = "<group>"; };
 		36E5FEDEDE7319BE8162D05E /* SubmitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitView.swift; sourceTree = "<group>"; };
 		4D17C422A33CC899E1C8BD88 /* LibraryPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPlayerView.swift; sourceTree = "<group>"; };
 		53DB30DD9566BDBDD26D6B8E /* APIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModels.swift; sourceTree = "<group>"; };
-		8568C6AF425F2C9C3CD41FBA /* QuickPodAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPodAPI.swift; sourceTree = "<group>"; };
+		8568C6AF425F2C9C3CD41FBA /* WavecrestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WavecrestAPI.swift; sourceTree = "<group>"; };
 		8EE76DFC81487679C5E66F16 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		AA11223344556677889900AA /* AuthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
 		AA55667788990011223344AA /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		AA66778899001122334455AA /* QuickPod.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickPod.entitlements; sourceTree = "<group>"; };
+		AA66778899001122334455AA /* Wavecrest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Wavecrest.entitlements; sourceTree = "<group>"; };
 		ADC83CE5E372188E423B881C /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
 		DD77889900112233445566DD /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		B569F9F78C88F6AED8A6A082 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -69,14 +69,14 @@
 			children = (
 				059A70446A62823CFC3A1BF4 /* Assets.xcassets */,
 				BFC0A27E9159C3A87D022E14 /* Info.plist */,
-				AA66778899001122334455AA /* QuickPod.entitlements */,
-				265D5BCD5695842CAD20BD3B /* QuickPodApp.swift */,
+				AA66778899001122334455AA /* Wavecrest.entitlements */,
+				265D5BCD5695842CAD20BD3B /* WavecrestApp.swift */,
 				59CA75DD6493144939974487 /* Models */,
 				7A95F6AA68C238A897346929 /* Utilities */,
 				6B8F8666DB085AF068C35AC4 /* ViewModels */,
 				DAAB7D220A841E4754E691DA /* Views */,
 			);
-			path = QuickPod;
+			path = Wavecrest;
 			sourceTree = "<group>";
 		};
 		426C85CC70CDABC743362598 = {
@@ -93,7 +93,7 @@
 				53DB30DD9566BDBDD26D6B8E /* APIModels.swift */,
 				F94540A8C98C4BF16B241CB3 /* LibraryStore.swift */,
 				AA55667788990011223344AA /* NotificationManager.swift */,
-				8568C6AF425F2C9C3CD41FBA /* QuickPodAPI.swift */,
+				8568C6AF425F2C9C3CD41FBA /* WavecrestAPI.swift */,
 				03D222F8AEDDCE4043CE7BDE /* SavedHighlight.swift */,
 				AA11223344556677889900AA /* AuthStore.swift */,
 			);
@@ -219,14 +219,14 @@
 				ADB5F29956FB1C8CE5EE9792 /* LibraryPlayerView.swift in Sources */,
 				541F94F6FBE9035459FAED13 /* LibraryStore.swift in Sources */,
 				A9284AB2F558EB7B3BC87AA3 /* LibraryView.swift in Sources */,
-				C586B3949AC007BE80810BB7 /* QuickPodAPI.swift in Sources */,
+				C586B3949AC007BE80810BB7 /* WavecrestAPI.swift in Sources */,
 				BB11223344556677889900BB /* AuthStore.swift in Sources */,
 				DD11223344556677889900DD /* AuthView.swift in Sources */,
 				EE11223344556677889900EE /* VerificationView.swift in Sources */,
 				EE22334455667788990011EE /* ForgotPasswordView.swift in Sources */,
 				BB55667788990011223344BB /* NotificationManager.swift in Sources */,
 				AA88990011223344556677AA /* OnboardingView.swift in Sources */,
-				7D973CCA664E5D7B3AFA52B0 /* QuickPodApp.swift in Sources */,
+				7D973CCA664E5D7B3AFA52B0 /* WavecrestApp.swift in Sources */,
 				6773C4D40FC1EC817D68023E /* ResultView.swift in Sources */,
 				5E914047F10579558BE6BBB4 /* SavedHighlight.swift in Sources */,
 				D0C72F5D35B9245220BF28A0 /* SettingsView.swift in Sources */,
@@ -245,15 +245,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGNING_ALLOWED = YES;
-				CODE_SIGN_ENTITLEMENTS = QuickPod/QuickPod.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Wavecrest/Wavecrest.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = QuickPod/Info.plist;
+				INFOPLIST_FILE = Wavecrest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.quickpod.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wavecrest.app;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -395,15 +395,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGNING_ALLOWED = YES;
-				CODE_SIGN_ENTITLEMENTS = QuickPod/QuickPod.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Wavecrest/Wavecrest.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = QuickPod/Info.plist;
+				INFOPLIST_FILE = Wavecrest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.quickpod.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wavecrest.app;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

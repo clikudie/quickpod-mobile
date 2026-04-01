@@ -8,7 +8,7 @@ struct ContentView: View {
     @ObservedObject private var notificationManager = NotificationManager.shared
     @Environment(\.scenePhase) private var scenePhase
     @State private var showSettings = false
-    @State private var showOnboarding = !UserDefaults.standard.bool(forKey: "quickpod_onboarding_done")
+    @State private var showOnboarding = !UserDefaults.standard.bool(forKey: "wavecrest_onboarding_done")
 
     var body: some View {
         Group {
@@ -22,7 +22,7 @@ struct ContentView: View {
         }
         .fullScreenCover(isPresented: $showOnboarding) {
             OnboardingView {
-                UserDefaults.standard.set(true, forKey: "quickpod_onboarding_done")
+                UserDefaults.standard.set(true, forKey: "wavecrest_onboarding_done")
                 showOnboarding = false
             }
         }
@@ -60,7 +60,7 @@ struct ContentView: View {
                         SubmitView(viewModel: viewModel)
                     }
                 }
-                .navigationTitle("QuickPod")
+                .navigationTitle("Wavecrest")
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         if viewModel.jobId != nil {

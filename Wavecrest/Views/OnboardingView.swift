@@ -9,7 +9,7 @@ struct OnboardingView: View {
         OnboardingPage(
             icon: "waveform.circle.fill",
             title: "Your podcast,\ndown to the highlights",
-            body: "QuickPod listens to any podcast or YouTube episode and extracts the moments that actually matter — no fluff, no filler."
+            body: "Wavecrest listens to any podcast or YouTube episode and extracts the moments that actually matter — no fluff, no filler."
         ),
         OnboardingPage(
             icon: "link.circle.fill",

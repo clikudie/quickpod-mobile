@@ -2,7 +2,7 @@ import Foundation
 import Security
 
 enum Keychain {
-    private static let service = "com.quickpod.app"
+    private static let service = "com.wavecrest.app"
 
     static func save(_ value: String, key: String) {
         let data = Data(value.utf8)

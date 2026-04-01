@@ -122,7 +122,7 @@ struct ForgotPasswordView: View {
         isLoading = true
         defer { isLoading = false }
         do {
-            try await QuickPodAPI.shared.forgotPassword(email: email.trimmingCharacters(in: .whitespacesAndNewlines).lowercased())
+            try await WavecrestAPI.shared.forgotPassword(email: email.trimmingCharacters(in: .whitespacesAndNewlines).lowercased())
             withAnimation { step = .resetPassword }
         } catch {
             errorMessage = error.localizedDescription
@@ -138,7 +138,7 @@ struct ForgotPasswordView: View {
         isLoading = true
         defer { isLoading = false }
         do {
-            let response = try await QuickPodAPI.shared.resetPassword(
+            let response = try await WavecrestAPI.shared.resetPassword(
                 email: email.trimmingCharacters(in: .whitespacesAndNewlines).lowercased(),
                 code: code,
                 newPassword: newPassword

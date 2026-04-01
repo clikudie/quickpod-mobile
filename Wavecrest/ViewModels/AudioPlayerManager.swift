@@ -25,7 +25,7 @@ final class AudioPlayerManager: ObservableObject {
     @Published var playbackRate: Float = 1.0
 
     private(set) var currentURL: URL?
-    var nowPlayingTitle: String = "QuickPod"
+    var nowPlayingTitle: String = "Wavecrest"
     private var player: AVPlayer?
 
     init() {

@@ -22,7 +22,7 @@ struct AuthView: View {
                         .font(.system(size: 72))
                         .foregroundStyle(Color.accentColor)
 
-                    Text("QuickPod")
+                    Text("Wavecrest")
                         .font(.largeTitle.bold())
 
                     Text("AI-powered podcast highlights")
@@ -123,9 +123,9 @@ struct AuthView: View {
         do {
             let response: TokenResponse
             if isLogin {
-                response = try await QuickPodAPI.shared.login(email: email, password: password)
+                response = try await WavecrestAPI.shared.login(email: email, password: password)
             } else {
-                response = try await QuickPodAPI.shared.register(email: email, password: password)
+                response = try await WavecrestAPI.shared.register(email: email, password: password)
             }
             AuthStore.shared.save(
                 token: response.accessToken,

@@ -1,14 +1,14 @@
 import Foundation
 
-final class QuickPodAPI {
-    static let shared = QuickPodAPI()
+final class WavecrestAPI {
+    static let shared = WavecrestAPI()
 
     private let session: URLSession
     private let decoder: JSONDecoder
     private let encoder: JSONEncoder
 
     private static let defaultBaseURL = "https://quickpod.likudie.com"
-    private static let baseURLKey = "quickpod_base_url"
+    private static let baseURLKey = "wavecrest_base_url"
 
     var baseURL: String {
         get {
@@ -82,7 +82,7 @@ final class QuickPodAPI {
 
     func uploadAudio(fileURL: URL) async throws -> HighlightResponse {
         let boundary = UUID().uuidString
-        guard let url = URL(string: baseURL + "/highlight") else {
+        guard let url = URL(string: baseURL + "/highlight/upload") else {
             throw APIError.invalidURL
         }
 
@@ -97,7 +97,7 @@ final class QuickPodAPI {
         body.append("--\(boundary)\r\n".data(using: .utf8)!)
         body.append("Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n".data(using: .utf8)!)
         body.append("Content-Type: \(audioMimeType(for: fileURL))\r\n\r\n".data(using: .utf8)!)
-        body.append(try Data(contentsOf: fileURL))
+        body.append(try await Task.detached(priority: .userInitiated) { try Data(contentsOf: fileURL) }.value)
         body.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
         request.httpBody = body
 

@@ -36,9 +36,9 @@ final class NotificationManager: NSObject, ObservableObject {
 
     /// Called after login/register so the token is sent even if APNs callback fired first.
     func sendTokenIfAuthenticated() {
-        guard let token = deviceToken, QuickPodAPI.shared.token != nil else { return }
+        guard let token = deviceToken, WavecrestAPI.shared.token != nil else { return }
         Task {
-            try? await QuickPodAPI.shared.registerDeviceToken(token)
+            try? await WavecrestAPI.shared.registerDeviceToken(token)
         }
     }
 }

@@ -92,7 +92,7 @@ struct VerificationView: View {
         isVerifying = true
         defer { isVerifying = false }
         do {
-            try await QuickPodAPI.shared.verifyEmail(code: code)
+            try await WavecrestAPI.shared.verifyEmail(code: code)
             AuthStore.shared.markVerified()
         } catch {
             errorMessage = error.localizedDescription
@@ -105,7 +105,7 @@ struct VerificationView: View {
         isResending = true
         defer { isResending = false }
         do {
-            try await QuickPodAPI.shared.resendVerification()
+            try await WavecrestAPI.shared.resendVerification()
             startCooldown()
         } catch {
             errorMessage = error.localizedDescription

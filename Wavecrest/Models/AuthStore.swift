@@ -10,10 +10,10 @@ final class AuthStore: ObservableObject {
     private(set) var email: String?
 
     // Token lives in Keychain. The rest are non-sensitive metadata in UserDefaults.
-    private static let tokenKeychainKey = "quickpod_auth_token"
-    private static let userIdKey        = "quickpod_user_id"
-    private static let isVerifiedKey    = "quickpod_is_verified"
-    private static let emailKey         = "quickpod_email"
+    private static let tokenKeychainKey = "wavecrest_auth_token"
+    private static let userIdKey        = "wavecrest_user_id"
+    private static let isVerifiedKey    = "wavecrest_is_verified"
+    private static let emailKey         = "wavecrest_email"
 
     private init() {
         migrateTokenIfNeeded()
@@ -23,7 +23,7 @@ final class AuthStore: ObservableObject {
         self.userId     = userId
         self.email      = UserDefaults.standard.string(forKey: Self.emailKey)
         self.isVerified = UserDefaults.standard.bool(forKey: Self.isVerifiedKey)
-        QuickPodAPI.shared.token = token
+        WavecrestAPI.shared.token = token
         isAuthenticated = true
         LibraryStore.shared.switchUser(userId: userId)
     }
@@ -33,7 +33,7 @@ final class AuthStore: ObservableObject {
         UserDefaults.standard.set(userId,     forKey: Self.userIdKey)
         UserDefaults.standard.set(isVerified, forKey: Self.isVerifiedKey)
         UserDefaults.standard.set(email,      forKey: Self.emailKey)
-        QuickPodAPI.shared.token = token
+        WavecrestAPI.shared.token = token
         self.userId     = userId
         self.isVerified = isVerified
         self.email      = email
@@ -52,7 +52,7 @@ final class AuthStore: ObservableObject {
         UserDefaults.standard.removeObject(forKey: Self.userIdKey)
         UserDefaults.standard.removeObject(forKey: Self.isVerifiedKey)
         UserDefaults.standard.removeObject(forKey: Self.emailKey)
-        QuickPodAPI.shared.token = nil
+        WavecrestAPI.shared.token = nil
         userId      = nil
         email       = nil
         isVerified  = false
